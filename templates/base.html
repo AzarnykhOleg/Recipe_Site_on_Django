@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik+Doodle+Shadow&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'fonts/rubikdoodleshadow.css' %}">
+    <link rel="shortcut icon" href="{% static 'favicon.ico' %}"  type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
+
+    <title>{% block title %}{{ name }}{% endblock %}</title>
+</head>
+
+<body>
+
+    <div class="menu row">
+        <div class="align-content-center col col-md-1 col-6">
+            <div class="logo_ico">
+                <a href="{% url 'index' %}"> <img src="{% static 'img/Group.png' %}" alt="logo"></a>
+            </div>
+        </div>
+
+        <div class="align-content-center col col-md-5 col-6">
+            <div class="search">
+                <a href="#"><img src="{% static 'img/search.svg' %}" alt="Поиск"></a>
+            </div>
+        </div>
+
+        <div class="align-content-center col col-md-1 col-4">
+             <a class="menu_button" href="#">Главная</a>
+        </div>
+
+        <div class="align-content-center col col-md-1 col-4">
+             <a class="menu_button" href="#">О&nbspнас</a>
+        </div>
+
+        <div class="align-content-center col col-md-1 col-4">
+             <a class="menu_button" href="#">Заказы</a>
+        </div>
+
+        <div class="align-content-center col col-md-1 col-4">
+             <a class="menu_button" href="#">Блог</a>
+        </div>
+
+        <div class="align-content-center col col-md-1 col-4">
+             <a class="menu_button" href="#">Контакты</a>
+        </div>
+
+        <div class="align-content-center col col-md-1 col-4">
+             <a class="menu_button_red" href="#">Вход</a>
+        </div>
+
+    </div>
+
+
+    <div class="desktop_index">
+
+        <div class="top center">
+
+            <div class="top_img">
+                <img style="width: 100%;"  src="{% static 'img/top_img.svg' %}"  alt="">
+            </div>
+
+            <div class="promo__content">
+                <div class="promo__info">
+                    <h1 class="promo__title">{% block title_1 %}БРЭНД{% endblock %}</h1>
+                    <h2 class="promo__heading">{% block title_2 %}&nbspРОСКОШНОЙ&nbsp{% endblock %}
+                        <span class="fashion">{% block title_3 %}МОДЫ{% endblock %}</span></h2>
+                </div>
+            </div>
+
+        </div>
+
+{% block content %}
+        <div class="offer center">
+
+            <div class="head_offer">
+
+                <div class="offer_small">
+                    <img src="{% static 'img/Women.png' %}" alt="for women image">
+                    <div class="sale__content">
+                        <p class="sale__text">30% СКИДКА</p>
+                        <h3 class="sale__heading">ДЛЯ ЖЕНЩИН</h3>
+                    </div>
+                </div>
+
+                <div class="offer_small">
+                    <img src="{% static 'img/men.png' %}" alt="for men image">
+                    <div class="sale__content">
+                        <p class="sale__text">ГОРЯЧЕЕ ПРЕДЛОЖЕНИЕ</p>
+                        <h3 class="sale__heading">ДЛЯ МУЖЧИН</h3>
+                    </div>
+                </div>
+
+                <div class="offer_small">
+                    <img src="{% static 'img/kids.png' %}" alt="for kids image">
+                    <div class="sale__content">
+                        <p class="sale__text">НОВЫЕ ПОСТУПЛЕНИЯ</p>
+                        <h3 class="sale__heading">ДЛЯ ДЕТЕЙ</h3>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="foot_offer">
+
+                <div class="offer_big">
+                    <img src="{% static 'img/Rectangle.png' %}" alt="for ACCESORIES image">
+                    <div class="sale__content">
+                        <p class="sale__text">РОСКОШНЫЕ И МОДНЫЕ
+                            </p>
+                        <h3 class="sale__heading">АКСЕССУАРЫ</h3>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+
+        <div class="products center">
+
+            <h2 class="product-box__heading">Новые товары</h2>
+            <p class="product-box__text">Покупай лучшие товары недели</p>
+
+
+            <div class="products_product">
+
+
+                <div class="product">
+                    <div class="product_img_box">
+                        <img class="product__img" src="{% static 'img/prod_1.png' %}" alt="">
+                    </div>
+                    <div class="product__content">
+                        <a href="#" class="product__heading">КИМ ЭЛЛЕРИ</a>
+                        <p class="product__text">Австралийская модельерша cool Ким Эллери, известная своим скульптурным
+                            подходом к традиционному пошиву одежды, сотрудничает с Moda Operandi.</p>
+                        <p class="product__price">12 000 &#x20bd</p>
+                    </div>
+                </div>
+
+                <div class="product">
+                    <div class="product_img_box">
+                        <img class="product__img" src="{% static 'img/prod_2.png' %}" alt="">
+                    </div>
+                    <div class="product__content">
+                        <a href="#" class="product__heading">ГОША РУБЧИНСКИЙ</a>
+                        <p class="product__text">В 2016 году вошёл в список 500 самых влиятельных людей мира моды по
+                            мнению сайта Business of Fashion. С 13 декабря 2023 года — главный дизайнер американского бренда Yeezy.</p>
+                        <p class="product__price">17 000 &#x20bd</p>
+                    </div>
+                </div>
+
+                <div class="product">
+                    <div class="product_img_box">
+                        <img class="product__img" src="{% static 'img/prod_3.png' %}" alt="">
+                    </div>
+                    <div class="product__content">
+                        <a href="#" class="product__heading">АЛЁНА АХМАДУЛЛИНА</a>
+                        <p class="product__text">Победитель конкурса «Адмиралтейская игла-2000», призёр международного конкурса
+                            «Международная премия дизайна Smirnoff» и «Русский Силуэт», обладатель призов на конкурсе «Платье года-2000».
+                            «Модный дизайнер» по версии премии «Женщина года Glamour»,
+                            «Вектор моды» по версии Elle Style Awards.</p>
+                        <p class="product__price">22 000 &#x20bd</p>
+                    </div>
+                </div>
+
+                <div class="product">
+                    <div class="product_img_box">
+                        <img class="product__img" src="{% static 'img/prod_4.png' %}" alt="">
+                    </div>
+                    <div class="product__content">
+                        <a href="#" class="product__heading">ТАША СТРОГАЯ</a>
+                        <p class="product__text">С 2002 года создаёт и выпускает одежду под своей маркой «Tasha Strogaya».
+                            С 2002 года - член Международной ассоциации «Союз дизайнеров» и Союз художников России.
+                        </p>
+                        <p class="product__price">14 000 &#x20bd</p>
+                    </div>
+                </div>
+
+                <div class="product">
+                    <div class="product_img_box">
+                        <img class="product__img" src="{% static 'img/prod_5.png' %}" alt="">
+                    </div>
+                    <div class="product__content">
+                        <a href="#" class="product__heading">ЕЛЕНА ЯРМАК</a>
+                        <p class="product__text">Дом моды, которым руководит Елена Ярмак, создаёт меховые и ювелирные изделия,
+                            верхнюю одежду и аксессуары. Бутики Дома открыты в Москве, Нью-Йорке, Милане, Цюрихе, Одессе.</p>
+                        <p class="product__price">8 000 &#x20bd</p>
+                    </div>
+                </div>
+
+                <div class="product">
+                    <div class="product_img_box">
+                        <img class="product__img" src="{% static 'img/prod_6.png' %}" alt="">
+                    </div>
+                    <div class="product__content">
+                        <a href="#" class="product__heading">КИРА ПЛАСТИНИНА</a>
+                        <p class="product__text">Стиль своего бренда Кира определила как «art-glamour-sportive-casual».
+                              Как утверждает сама Кира, она шьёт только такую одежду, которую хотела бы носить сама,
+                              поэтому 99 % её гардероба составляют вещи собственной марки.</p>
+                        <p class="product__price">15 000 &#x20bd</p>
+                    </div>
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+{% endblock %}
+
+        <div class="advantages center">
+            <article class="advantages__item">
+                <img class="advantages__img" src="{% static 'img/Forma 1.svg' %}" alt="">
+                <h3 class="advantages__heading">Бесплатная доставка</h3>
+                <p class="advantages__text">
+                    Нет ничего дороже времени, так что береги его. Обращайся к нам!
+                </p>
+            </article>
+            <article class="advantages__item">
+                <img class="advantages__img" src="{% static 'img/Forma 2.svg' %}" alt="">
+                <h3 class="advantages__heading">Акции</h3>
+                <p class="advantages__text">
+                    Шопинг, который радует.
+                </p>
+            </article>
+            <article class="advantages__item">
+                <img class="advantages__img" src="{% static 'img/Forma 3.svg' %}" alt="">
+                <h3 class="advantages__heading">Лучшая одежда</h3>
+                <p class="advantages__text">
+                    Качество никогда не выходит из моды.
+                </p>
+            </article>
+        </div>
+
+
+        <div class="pred_footer_container">
+
+            <div class="pred_footer center">
+                <article class="advantages__item">
+
+                    <div>
+                        <img class="pred_footer__img" src="{% static 'img/Layer 40.png' %}" alt="">
+                    </div>
+
+
+                    <p class="pred_footer__text">
+                        "Я обязательно научусь программировать <br> на языке PYTHON <br> и изучу DJANGO!"
+                    </p>
+                </article>
+
+
+                <article class="advantages__item_1">
+                    <p class="pred_footer__text__1">
+                        <span class="bold">ПОДПИШИТЕСЬ</span> <br> НА&nbspНАШУ&nbspРАССЫЛКУ НОВОСТЕЙ&nbspИ&nbspРЕКЛАМНЫЕ АКЦИИ
+                    </p>
+
+
+                    <div class="input_place">
+                        <form>
+                            <input class="pred_footer_input_btn" required type="email" placeholder="Введите Ваш Email">
+                            <input class="pred_footer_input" required type="submit" value="Подписаться">
+                        </form>
+                    </div>
+
+
+                </article>
+
+            </div>
+
+        </div>
+
+    </div>
+
+<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>
