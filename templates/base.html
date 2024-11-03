@@ -18,40 +18,45 @@
 <body>
 
     <div class="menu row">
-        <div class="align-content-center col col-md-1 col-6">
+
+        <div class="search d-flex align-items-center justify-content-center col col-md-2 col-6">
             <div class="logo_ico">
                 <a href="{% url 'index' %}"> <img src="{% static 'img/Group.png' %}" alt="logo"></a>
             </div>
         </div>
 
-        <div class="align-content-center col col-md-5 col-6">
+        <div class="search d-flex align-items-center justify-content-center col col-md-3 col-6">
             <div class="search">
                 <a href="#"><img src="{% static 'img/search.svg' %}" alt="Поиск"></a>
             </div>
         </div>
 
-        <div class="align-content-center col col-md-1 col-4">
+        <div class="search d-flex align-items-center justify-content-center col col-md-1 col-4">
              <a class="menu_button" href="#">Главная</a>
         </div>
 
-        <div class="align-content-center col col-md-1 col-4">
-             <a class="menu_button" href="#">О&nbspнас</a>
+        <div class="search d-flex align-items-center justify-content-center col col-md-1 col-4">
+             <a class="menu_button" href="#">Поиск</a>
         </div>
 
-        <div class="align-content-center col col-md-1 col-4">
-             <a class="menu_button" href="#">Заказы</a>
+        <div class="search d-flex align-items-center justify-content-center col col-md-1 col-4">
+             <a class="menu_button" href="#">Добавить</a>
         </div>
 
-        <div class="align-content-center col col-md-1 col-4">
-             <a class="menu_button" href="#">Блог</a>
+        <div class="search d-flex align-items-center justify-content-center col col-md-1 col-4">
+             <a class="menu_button" href="#">Статьи</a>
         </div>
 
-        <div class="align-content-center col col-md-1 col-4">
-             <a class="menu_button" href="#">Контакты</a>
+        <div class="search d-flex align-items-center justify-content-center col col-md-1 col-4">
+             <a class="menu_button" href="#">Избранное</a>
         </div>
 
-        <div class="align-content-center col col-md-1 col-4">
+        <div class="search d-flex align-items-center justify-content-center col col-md-1 col-4">
              <a class="menu_button_red" href="#">Вход</a>
+        </div>
+
+        <div class="search d-flex align-items-center justify-content-center col col-md-1 col-4">
+             <a class="menu_button_red" href="#"></a>
         </div>
 
     </div>
@@ -62,14 +67,14 @@
         <div class="top center">
 
             <div class="top_img">
-                <img style="width: 100%;"  src="{% static 'img/top_img.svg' %}"  alt="">
+                <img style="width: 100%;"  src="{% static 'img/cookbook.jpeg' %}"  alt="">
             </div>
 
-            <div class="promo__content">
-                <div class="promo__info">
-                    <h1 class="promo__title">{% block title_1 %}БРЭНД{% endblock %}</h1>
-                    <h2 class="promo__heading">{% block title_2 %}&nbspРОСКОШНОЙ&nbsp{% endblock %}
-                        <span class="fashion">{% block title_3 %}МОДЫ{% endblock %}</span></h2>
+            <div class="align-items-center justify-content-center promo__content">
+                <div class="align-items-center justify-content-center promo__info">
+                    <h1 class="promo__title">{% block title_1 %}САЙТ{% endblock %}</h1>
+                    <h2 class="promo__heading">{% block title_2 %}ВКУСНЫХ&nbsp{% endblock %}
+                        <span class="fashion">{% block title_3 %}РЕЦЕПТОВ{% endblock %}</span></h2>
                 </div>
             </div>
 
@@ -125,7 +130,7 @@
 
 
 
-        <div class="products center">
+        <div class="products center" style='background-image: url("{% static 'img/wall.jpg' %}")'>
 
             <h2 class="product-box__heading">Новые товары</h2>
             <p class="product-box__text">Покупай лучшие товары недели</p>
@@ -216,7 +221,9 @@
 
         </div>
 
-{% endblock %}
+
+
+            {% endblock %}
 
         <div class="advantages center">
             <article class="advantages__item">
