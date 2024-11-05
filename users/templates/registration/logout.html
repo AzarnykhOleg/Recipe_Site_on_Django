@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Выход{% endblock %}
+
+{% block content %}
+  <p>Вы вышли из системы</p>
+
+  <a href="{% url 'login' %}">Войти в систему</a>
+{% endblock %}

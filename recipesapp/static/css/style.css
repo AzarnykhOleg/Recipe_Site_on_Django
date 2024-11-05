@@ -17,7 +17,7 @@ body {
     font-size: 38px;
     line-height: 36px;
     font-weight: 400;
-    font-family: "Rubik Doodle Shadow";
+    font-family: "Rubik Doodle Shadow", serif;
     font-style: normal;
 }
 
@@ -114,7 +114,7 @@ a {
     border-left: 12px solid #F16D7F;
     padding-left: 16px;
     margin-top: 50%;
-    font-family: Lato;
+    font-family: Lato, serif;
 }
 
 .promo__title,
@@ -124,7 +124,7 @@ a {
     font-size: 80px;
     line-height: normal;
     color: #222222;
-    font-family: Lato;
+    font-family: Lato, serif;
 }
 
 
@@ -384,10 +384,9 @@ a {
     position: relative; 
     display: flex;
     align-items: center;
-    justify-content: center;
+    /*justify-content: center;*/
     padding-top: 104px;
     padding-bottom: 60px;
-    display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: space-around;
@@ -400,19 +399,19 @@ a {
     opacity: 30%;
     background-size: cover;
     position: absolute;
-    top: 0px;
-    right: 0px;
-    bottom: 0px;
-    left: 0px;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
 }
 
 .pred_footer__text {
-    font-family: Lato;
+    font-family: Lato, serif;
     font-style: italic;
     font-size: 20px;
     font-weight: 400;
     line-height: 24px;
-    letter-spacing: 0%;
+    letter-spacing: 0;
     text-align: center;
     color: #000;
     opacity: 100%;
@@ -420,11 +419,11 @@ a {
 }
 
 .pred_footer__text__1 {
-    font-family: Lato;
+    font-family: Lato, serif;
     font-size: 20px;
     font-weight: 400;
     line-height: 24px;
-    letter-spacing: 0%;
+    letter-spacing: 0;
     text-align: center;
     color: #000;
     opacity: 100%;
@@ -450,32 +449,32 @@ a {
     width: 90%;
     height: 100%;
     color: rgb(34, 34, 36);
-    font-family: Lato;
+    font-family: Lato, serif;
     font-size: 14px;
     font-weight: 400;
     line-height: 17px;
-    letter-spacing: 0%;
+    letter-spacing: 0;
     position: absolute;
-    top: 0px;
-    right: 0px;
-    bottom: 0px;
-    left: 0px;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
     padding-left: 10%;
     border: 0;
 }
 
 .pred_footer_input {
-    border-radius: 0px 50px 50px 0px;
+    border-radius: 0 50px 50px 0;
     width: 30%;
     height: 100%;
     background: rgba(224, 92, 110, 0.582);
     position: absolute;
-    right: 0px;
-    font-family: Lato;
+    right: 0;
+    font-family: Lato, serif;
     font-size: 14px;
     font-weight: 400;
     line-height: 17px;
-    letter-spacing: 0%;
+    letter-spacing: 0;
     border: 0;
 }
 
@@ -512,7 +511,7 @@ a {
 .menu_button_start
 {
     color: #f9fcf2;
-    font-family: Gilroy-Medium;
+    font-family: Gilroy-Medium, serif;
     font-size: 20px;
     font-style: normal;
     font-weight: 600;
@@ -531,7 +530,7 @@ a {
     border-radius: 30px;
     background: #a42a04;
     color: #FFF;
-    font-family: Gilroy-SemiBold;
+    font-family: Gilroy-SemiBold, serif;
     font-size: 12px;
 
     /*display: flex;*/
@@ -571,7 +570,7 @@ a {
         border-left: 12px solid #F16D7F;
         padding-left: 8px;
         margin-top: 35%;
-        font-family: Lato;
+        font-family: Lato, serif;
     }
 
     .promo__heading, .fashion{
@@ -648,7 +647,7 @@ a {
         margin-top: 25%;
         margin-bottom: 5%;
         margin-left: 6%;
-        font-family: Lato;
+        font-family: Lato, serif;
     }
 
     .promo__content {
@@ -674,7 +673,7 @@ a {
         margin-top: 48px;
         display: -ms-grid;
         display: flex;
-        -ms-grid-columns: (360px)[auto-fit];
+        /*-ms-grid-columns: (360px)[auto-fit];*/
         grid-template-columns: repeat(3, 30%);
         -ms-flex-pack: center;
         gap: 30px;
@@ -706,22 +705,7 @@ a {
     }
 
     .product__content {
-        background: #F8F8F8;
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-box-orient: vertical;
-        -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-        flex-direction: column;
-        -webkit-box-pack: center;
-        -ms-flex-pack: center;
-        justify-content: center;
-        -webkit-box-align: start;
-        -ms-flex-align: start;
-        align-items: flex-start;
         margin: 24px 10px;
-        gap: 16px;
     }
 
     .offer_small img {

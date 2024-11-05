@@ -15,7 +15,6 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
@@ -27,10 +26,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
 
 INSTALLED_APPS = [
+    'users',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -55,8 +54,7 @@ ROOT_URLCONF = 'Recipe_Site_on_Django.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates']
-        ,
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -70,7 +68,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'Recipe_Site_on_Django.wsgi.application'
-
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
@@ -108,7 +105,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
@@ -120,14 +116,13 @@ USE_I18N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
 STATIC_ROOT = BASE_DIR / 'static/'
 
-STATICFILES_DIRS = [BASE_DIR / 'templates/src']
+STATICFILES_DIRS = [BASE_DIR / 'templates/']
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
@@ -149,12 +144,12 @@ LOGGING = {
     'handlers': {
         'console': {
             'class': 'logging.StreamHandler',
-            'formatter': 'verbose', # добавлен параметр formatter
+            'formatter': 'verbose',  # добавлен параметр formatter
         },
         'file': {
             'class': 'logging.FileHandler',
             'filename': './django.log',
-            'formatter': 'verbose', # добавлен параметр formatter
+            'formatter': 'verbose',  # добавлен параметр formatter
         },
     },
     'loggers': {
@@ -169,3 +164,9 @@ LOGGING = {
         },
     },
 }
+
+# Пользователи будут перенаправлены на главную страницу после входа в систему
+LOGIN_REDIRECT_URL = '/'
+# Пользователи будут перенаправлены на главную страницу после выхода из системы
+LOGOUT_REDIRECT_URL = 'logout'
+LOGOUT_URL = 'registration/logout'
