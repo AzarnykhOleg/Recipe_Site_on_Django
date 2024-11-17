@@ -73,89 +73,65 @@ class RecipeDetail(View):
         return render(request, 'recipesapp/recipe_detail.html', {'form': form})
 
     def post(self, request):
-        form = RecipeForm(request.POST, request.FILES)
-        print(f'{form.is_valid()}')
-        if form.is_valid():
-            recipe_id = form.cleaned_data['id']
-            title = form.cleaned_data['title']
-            description = form.cleaned_data['description']
-            category = form.cleaned_data['category']
-            cooking_steps = form.cleaned_data['cooking_steps']
-            cooking_time = form.cleaned_data['cooking_time']
-            image = form.cleaned_data['image']
-            author_id = form.cleaned_data['author_id']
-            author = User.objects.filter(pk=author_id).first()
-            fs = FileSystemStorage()
-            fs.save(image.name, image)
-            category = Category.objects.get(title=category)
+        """
+        Обработка формы при редактировании или сохранении данных
+        """
+        if 'recipe_id' in request.POST:
+            # Нажали кнопку РЕДАКТИРОВАТЬ - отображаем форму с редактируемыми данными
+            # Вытаскиваем данные из базы данных
+            recipe = Recipe.objects.filter(pk=request.POST['recipe_id']).first()
+            initial = {'id': str(request.POST['recipe_id']),
+                       'title': recipe.title,
+                       'description': recipe.description,
+                       'category': recipe.category,
+                       'cooking_steps': recipe.cooking_steps,
+                       'cooking_time': recipe.cooking_time,
+                       'image': recipe.image,
+                       # 'old_image': recipe.image,
+                       'author_id': request.user.id
+                       }
+            form = RecipeForm(initial=initial)
+            messages.info(request, f'Измените данные')
+            return render(request, 'recipesapp/recipe_detail.html', {'form': form})
+        else:
+            # Пытаемся сохранить данные из формы
+            form = RecipeForm(request.POST, request.FILES)
 
-            recipe = Recipe(title=title, description=description, cooking_steps=cooking_steps,
-                            cooking_time=cooking_time, image=image.name, author=author, category=category)
-            recipe.save()
-            logger.info(f'Successfully create recipe: {recipe}')
-            return redirect("/")  # Переходим к таблице рецептов
+            if form.is_valid():
+                recipe_id = form.cleaned_data['id']
+                title = form.cleaned_data['title']
+                description = form.cleaned_data['description']
+                category = form.cleaned_data['category']
+                cooking_steps = form.cleaned_data['cooking_steps']
+                cooking_time = form.cleaned_data['cooking_time']
+                image = form.cleaned_data['image']
+                author_id = form.cleaned_data['author_id']
+                author = User.objects.filter(pk=author_id).first()
+                fs = FileSystemStorage()
+                category = Category.objects.get(title=category)
 
+                if image:
+                    fs.save(image.name, image)
 
-#         if 'recipe_id' in request.POST:
-#             # Нажали кнопку РЕДАКТИРОВАТЬ - отображаем форму с редактируемыми данными
-#             # Вытаскиваем данные из базы данных
-#             recipe = Recipe.objects.filter(pk=request.POST['recipe_id']).first()
-#             initial = {'id': str(request.POST['recipe_id']),
-#                        'title': recipe.title,
-#                        'description': recipe.description,
-#                        'cooking_steps': recipe.cooking_steps,
-#                        'cooking_time': recipe.cooking_time,
-#                        'image': recipe.image,
-#                        # 'category': recipe.category,
-#                        # 'products': recipe.products,
-#                        'old_image': recipe.image,
-#                        'author_id': request.user.id
-#                        }
-#             form = RecipeForm(initial=initial)
-#             messages.info(request, 'Измените данные')
-#             return render(request, 'recipesapp/recipe_detail.html', {'form': form})
-#         else:
-#             # Пытаемся сохранить данные из формы
-#             form = RecipeForm(request.POST, request.FILES)
-#
-#             if form.is_valid():
-#                 recipe_id = form.cleaned_data['id']
-#                 title = form.cleaned_data['title']
-#                 description = form.cleaned_data['description']
-#                 cooking_steps = form.cleaned_data['cooking_steps']
-#                 cooking_time = form.cleaned_data['cooking_time']
-#                 image = form.cleaned_data['image']
-#                 # category: form.cleaned_data['category']
-#                 # products: form.cleaned_data['products']
-#                 old_image = form.cleaned_data['old_image']
-#                 author_id = form.cleaned_data['author_id']
-#                 author = User.objects.filter(pk=author_id).first()
-#                 fs = FileSystemStorage()
-#
-#                 if image:
-#                     fs.save(image.name, image)
-#
-#                 if recipe_id == 0:
-#                     # Вновь создаваемый рецепт
-#                     # recipe = Recipe(title=title, description=description,
-#                     #                 cooking_steps=cooking_steps, cooking_time=cooking_time, category=category,
-#                     #                 products=products, image=image.name, author=author)
-#                     recipe = Recipe(title=title, description=description,
-#                                     cooking_steps=cooking_steps, cooking_time=cooking_time, image=image.name, author=author)
-#                 else:
-#                     # Изменение данных уже существующего рецепта
-#                     recipe = Recipe.objects.filter(pk=recipe_id).first()
-#                     recipe.title = title
-#                     recipe.description = description
-#                     recipe.cooking_steps = cooking_steps
-#                     recipe.cooking_time = cooking_time
-#                     recipe.image = image.name if image else old_image
-#                     recipe.author = author
-#                 recipe.save()
-#                 logger.info(f'Successfully create recipe: {recipe}')
-#                 return redirect("recipesapp/index.html")  # Переходим к таблице рецептов
-#             else:
-#                 # если ошибка (или валидация не пройдена) - заново отображаем форму, с уже заполненными данными
-#                 messages.warning(request, 'Ошибка в данных')
-#                 logger.warning(f'Ошибка в данных')
-#                 return render(request, 'recipesapp/recipe_detail.html', {'form': form})
+                if recipe_id == 0:
+                    # Вновь создаваемый рецепт
+                    recipe = Recipe(title=title, description=description, cooking_steps=cooking_steps,
+                                    cooking_time=cooking_time, image=image.name, author=author, category=category)
+                else:
+                    # Изменение данных уже существующего рецепта
+                    recipe = Recipe.objects.filter(pk=recipe_id).first()
+                    recipe.title = title
+                    recipe.description = description
+                    recipe.category = Category.objects.get(title=category)
+                    recipe.cooking_steps = cooking_steps
+                    recipe.cooking_time = cooking_time
+                    # recipe.image = image.name if image else old_image
+                    recipe.image = image.name
+                    recipe.author = author
+                recipe.save()
+                logger.info(f'Successfully create recipe: {recipe}')
+                return redirect("/")  # Переходим к таблице рецептов
+            else:
+                # если ошибка (или валидация не пройдена) - заново отображаем форму, с уже заполненными данными
+                messages.warning(request, f'Ошибка в данных')
+                return render(request, 'website/recipe_detail.html', {'form': form})

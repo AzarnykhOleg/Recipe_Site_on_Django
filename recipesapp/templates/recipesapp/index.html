@@ -6,7 +6,7 @@
 
 {% block content %}
 
-        <div class="products center" style='background-image: url("{% static 'img/wall.jpg' %}")'>
+        <div class="products center" style='background-color: #fefbe8;'>
             <h2 class="product-box__heading">Новые блюда</h2>
             <p class="product-box__text">Готовьте вкусно</p>
             <div class="products_product">
@@ -14,7 +14,7 @@
 {% for recipe in recipes %}
                 <div class="product">
                     <div class="product_img_box">
-                        <img class="product__img" src="{{ MEDIA_URL }}{{ recipe.image }}" alt="">
+                    <a href="recipe_full/{{recipe.id}}"><img class="product__img" src="{{ MEDIA_URL }}{{ recipe.image }}" alt=""></a>
                     </div>
                     <div class="product__content">
                         <a href="recipe_full/{{recipe.id}}" class="product__price">{{ recipe.title }}</a>
