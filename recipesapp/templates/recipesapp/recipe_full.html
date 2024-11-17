@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block title %}Добавление рецепта{% endblock %}
+
+{% block title_1 %}РЕЦЕПТ{% endblock %}
+{% block title_2 %}ПРИГОТОВЛЕНИЯ{% endblock %}
+{% block title_3 %}{{ recipe.title }}{% endblock %}
+
+{%block content%}
+
+                <tr>
+                    <h1 scope="row" class="text-center align-middle">{{ forloop.counter }}</h1>
+                    <h1 >{{ recipe.title }}</h1>
+                    <h4 class="align-middle">{{ recipe.description }}</h4>
+                    <div class="product_img_box">
+                        <img class="product__img" src="{{ MEDIA_URL }}{{ recipe.image }}" alt="">
+                    </div>
+                    <h2 class="align-middle">{{ recipe.cooking_steps }}</h2>
+                    <h2 class="align-middle">Время приготовления: {{ recipe.cooking_time }} мин</h2>
+                    <h3 class="align-middle">Автор: {{ recipe.author.get_full_name|default:recipe.author.username }}</h3>
+                    <td class="text-center align-middle">
+                        <div style="display: flex; gap: 5px;">
+                        {% if user.id == recipe.author.id or user.is_superuser or user.is_staff %}
+                            <form action="/recipe/" method="POST">
+                                {% csrf_token %}
+                                <input name="recipe_id" type="hidden" value="{{ recipe.id }}">
+                                <input type="submit" class="btn btn-outline-secondary btn-lg" title="Редактировать" value="Редактировать">
+                            </form>
+                            <form action="/delete/" method="POST">
+                                {% csrf_token %}
+                                <input name="recipe_id" type="hidden" value="{{ recipe.id }}">
+                                <input type="submit" class="btn btn-outline-danger btn-lg" title="Удалить" value="Удалить">
+                            </form>
+                        {% endif %}
+                        </div>
+                    </td>
+                </tr>
+
+{%endblock%}

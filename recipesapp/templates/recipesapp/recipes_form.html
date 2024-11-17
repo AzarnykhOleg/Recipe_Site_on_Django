@@ -1,0 +1,35 @@
+{#{% extends 'base.html' %}#}
+{#{% load static %}#}
+{#{% block title %}Добавление рецепта{% endblock %}#}
+{##}
+{#{% block title_1 %}ДОБАВИТЬ{% endblock %}#}
+{#{% block title_2 %}НОВЫЙ{% endblock %}#}
+{#{% block title_3 %}РЕЦЕПТ{% endblock %}#}
+{##}
+{#{%block content%}#}
+{##}
+{#    <form action="" method="post" enctype="multipart/form-data">#}
+{#    {% csrf_token %}#}
+{#    {{ form.as_p }}#}
+{#        <br>#}
+{#            <fieldset>#}
+{#                <legend></legend>#}
+{#                {{ company_form.management_form }}#}
+{#                {{ company_form.non_form_errors }}#}
+{#                {% for form in company_form %}#}
+{#                    {{ form.id }}#}
+{#                    <div class="inline {{ company_form.prefix }}">#}
+{#                        {{ form.file.errors }}#}
+{#                        {{ form.file.label_tag }}#}
+{#                        {{ form.file }}#}
+{#                        {{ form.description.errors }}#}
+{#                        {{ form.description.label_tag }}#}
+{#                        {{ form.description }}#}
+{#                    </div>#}
+{#                {% endfor %}#}
+{#            </fieldset>#}
+{##}
+{# <button class="btn btn-primary" type="submit" name="submit">Добавить</button>#}
+{#		</form>#}
+{##}
+{#{%endblock%}#}

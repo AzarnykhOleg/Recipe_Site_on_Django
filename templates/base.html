@@ -40,7 +40,7 @@
         </div>
 
         <div class="search d-flex align-items-center justify-content-center col col-md-1 col-4">
-             <a class="menu_button" href="#">Добавить</a>
+             <a class="menu_button" href="{% url 'recipe_form' %}">Добавить</a>
         </div>
 
         <div class="search d-flex align-items-center justify-content-center col col-md-1 col-4">
@@ -48,7 +48,6 @@
         </div>
 
         <div class="search d-flex align-items-center justify-content-center col col-md-1 col-4">
-{#             <a class="menu_button" href="#">Регистрация</a>#}
              <a class="menu_button" href="{% url 'registration' %}">Регистрация</a>
         </div>
 
@@ -128,103 +127,13 @@
 
 {% block content_products %}
 
-        <div class="products center" style='background-image: url("{% static 'img/wall.jpg' %}")'>
-
-            <h2 class="product-box__heading">Новые товары</h2>
-            <p class="product-box__text">Покупай лучшие товары недели</p>
-
-
-            <div class="products_product">
-
-
-                <div class="product">
-                    <div class="product_img_box">
-                        <img class="product__img" src="{% static 'img/prod_1.png' %}" alt="">
-                    </div>
-                    <div class="product__content">
-                        <a href="#" class="product__heading">КИМ ЭЛЛЕРИ</a>
-                        <p class="product__text">Австралийская модельерша cool Ким Эллери, известная своим скульптурным
-                            подходом к традиционному пошиву одежды, сотрудничает с Moda Operandi.</p>
-                        <p class="product__price">12 000 &#x20bd</p>
-                    </div>
-                </div>
-
-                <div class="product">
-                    <div class="product_img_box">
-                        <img class="product__img" src="{% static 'img/prod_2.png' %}" alt="">
-                    </div>
-                    <div class="product__content">
-                        <a href="#" class="product__heading">ГОША РУБЧИНСКИЙ</a>
-                        <p class="product__text">В 2016 году вошёл в список 500 самых влиятельных людей мира моды по
-                            мнению сайта Business of Fashion. С 13 декабря 2023 года — главный дизайнер американского бренда Yeezy.</p>
-                        <p class="product__price">17 000 &#x20bd</p>
-                    </div>
-                </div>
-
-                <div class="product">
-                    <div class="product_img_box">
-                        <img class="product__img" src="{% static 'img/prod_3.png' %}" alt="">
-                    </div>
-                    <div class="product__content">
-                        <a href="#" class="product__heading">АЛЁНА АХМАДУЛЛИНА</a>
-                        <p class="product__text">Победитель конкурса «Адмиралтейская игла-2000», призёр международного конкурса
-                            «Международная премия дизайна Smirnoff» и «Русский Силуэт», обладатель призов на конкурсе «Платье года-2000».
-                            «Модный дизайнер» по версии премии «Женщина года Glamour»,
-                            «Вектор моды» по версии Elle Style Awards.</p>
-                        <p class="product__price">22 000 &#x20bd</p>
-                    </div>
-                </div>
-
-                <div class="product">
-                    <div class="product_img_box">
-                        <img class="product__img" src="{% static 'img/prod_4.png' %}" alt="">
-                    </div>
-                    <div class="product__content">
-                        <a href="#" class="product__heading">ТАША СТРОГАЯ</a>
-                        <p class="product__text">С 2002 года создаёт и выпускает одежду под своей маркой «Tasha Strogaya».
-                            С 2002 года - член Международной ассоциации «Союз дизайнеров» и Союз художников России.
-                        </p>
-                        <p class="product__price">14 000 &#x20bd</p>
-                    </div>
-                </div>
-
-                <div class="product">
-                    <div class="product_img_box">
-                        <img class="product__img" src="{% static 'img/prod_5.png' %}" alt="">
-                    </div>
-                    <div class="product__content">
-                        <a href="#" class="product__heading">ЕЛЕНА ЯРМАК</a>
-                        <p class="product__text">Дом моды, которым руководит Елена Ярмак, создаёт меховые и ювелирные изделия,
-                            верхнюю одежду и аксессуары. Бутики Дома открыты в Москве, Нью-Йорке, Милане, Цюрихе, Одессе.</p>
-                        <p class="product__price">8 000 &#x20bd</p>
-                    </div>
-                </div>
-
-                <div class="product">
-                    <div class="product_img_box">
-                        <img class="product__img" src="{% static 'img/prod_6.png' %}" alt="">
-                    </div>
-                    <div class="product__content">
-                        <a href="#" class="product__heading">КИРА ПЛАСТИНИНА</a>
-                        <p class="product__text">Стиль своего бренда Кира определила как «art-glamour-sportive-casual».
-                              Как утверждает сама Кира, она шьёт только такую одежду, которую хотела бы носить сама,
-                              поэтому 99 % её гардероба составляют вещи собственной марки.</p>
-                        <p class="product__price">15 000 &#x20bd</p>
-                    </div>
-                </div>
-
-
-            </div>
-
-
-        </div>
 
 {% endblock %}
 
         <div class="advantages center">
             <article class="advantages__item">
                 <img class="advantages__img" src="{% static 'img/Forma 1.svg' %}" alt="">
-                <h3 class="advantages__heading">Бесплатная доставка</h3>
+                <h3 class="advantages__heading">Бесплатная доставка продуктов</h3>
                 <p class="advantages__text">
                     Нет ничего дороже времени, так что береги его. Обращайся к нам!
                 </p>
@@ -233,14 +142,14 @@
                 <img class="advantages__img" src="{% static 'img/Forma 2.svg' %}" alt="">
                 <h3 class="advantages__heading">Акции</h3>
                 <p class="advantages__text">
-                    Шопинг, который радует.
+                    Скидки на покупки от 1500р.
                 </p>
             </article>
             <article class="advantages__item">
                 <img class="advantages__img" src="{% static 'img/Forma 3.svg' %}" alt="">
-                <h3 class="advantages__heading">Лучшая одежда</h3>
+                <h3 class="advantages__heading">Лучшиие продукты</h3>
                 <p class="advantages__text">
-                    Качество никогда не выходит из моды.
+                    Самые свежие по выгодным ценам.
                 </p>
             </article>
         </div>
@@ -270,7 +179,7 @@
 
                     <div class="input_place">
                         <form>
-                            <input class="pred_footer_input_btn" required type="email" placeholder="Введите Ваш Email">
+                            <input class="pred_footer_input_btn" required type="email" placeholder="Это поле пока не работает">
                             <input class="pred_footer_input" required type="submit" value="Подписаться">
                         </form>
                     </div>

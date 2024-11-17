@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block title %}Рецепт{% endblock %}
+
+{% block title_1 %}ДОБАВИТЬ{% endblock %}
+{% block title_2 %}НОВЫЙ{% endblock %}
+{% block title_3 %}РЕЦЕПТ{% endblock %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+
+<div class="text-body text-justify">
+    <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% for hidden_field in form.hidden_fields %}
+            {{ hidden_field }}
+        {% endfor %}
+
+        <table class="table">
+            <tr>
+                <td>
+                <div style="text-align: left;">
+                    {{ form.title.label_tag }}
+                    {% render_field form.title class="form-control" %}
+
+                    {{ form.cooking_time.label_tag }}
+                    {% render_field form.cooking_time class="form-control" %}
+
+                    {{ form.category.label_tag }}
+                    {% render_field form.category class="form-control" %}
+
+{#                    {{ form.products.label_tag }}#}
+{#                    {% render_field form.products class="form-control" %}#}
+                </div>
+                </td>
+
+                <td>
+                    <div  class="col-sm" style="text-align: left;">
+                    {{ form.cooking_steps.label_tag }}
+                    {% render_field form.cooking_steps class="form-control" %}
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <div style="text-align: left;">
+                        {{ form.description.label_tag }}
+                        {% render_field form.description class="form-control" %}
+                    </div>
+                </td>
+
+                <td>
+                    <div style="text-align: left;">
+                        {{ form.image.label_tag }}
+                        {% render_field form.image class="form-control" %}
+                        {% if form.image.value %}
+                            <div>
+                                <img class="img-thumbnail" src="/media/{{ form.image.value }}" alt="{{ form.image.value }}" style="width: 200px; height: 200px;">
+                            </div>
+                        {%  endif %}
+                    </div>
+                </td>
+            </tr>
+        </table>
+
+        <div style="display: flex; gap: 50px; justify-content: center; margin-top: 20px;margin-bottom: 20px;">
+            <input type="submit" class="btn btn-primary" value="Сохранить">
+            <input type="reset" class="btn btn-primary" value="Очистить">
+        </div>
+
+    </form>
+</div>
+{% else %}
+<div class="text-body" style="margin-top: 50px;margin-bottom: 50px; color: red;">
+    <h1><strong>Требуется авторизация!!!</strong></h1>
+</div>
+{% endif %}
+
+{% endblock %}
+
+{% block content_products %}{% endblock %}
