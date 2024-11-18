@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load crispy_forms_tags %}
 
 {% block title %}Вход{% endblock %}
 
@@ -19,26 +20,12 @@
   {% endif %}
 {% endif %}
 
-<form method="post" action="{% url 'login' %}">
+<form method="post" action="{% url 'login' %}" class="form">
 {% csrf_token %}
-<table>
-
-<tr>
-  <td>{{ form.username.label_tag }}</td>
-  <td>{{ form.username }}</td>
-</tr>
-
-<tr>
-  <td>{{ form.password.label_tag }}</td>
-  <td>{{ form.password }}</td>
-</tr>
-</table>
-
-<input type="submit" value="Войти" />
-<input type="hidden" name="next" value="{{ next }}" />
+    {% csrf_token %}
+    {{ form|crispy }}
+    <button type="submit" class="btn btn-outline-secondary btn-lg">Войти</button>
 </form>
 
-{# Предполагается, что вы настроили представление password_reset в вашем URLconf #}
-{#<p><a href="{% url 'password_reset' %}">Lost password?</a></p>#}
 
 {% endblock %}
