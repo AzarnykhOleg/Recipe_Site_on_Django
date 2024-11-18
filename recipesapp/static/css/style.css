@@ -7,6 +7,8 @@
   font-family: sans-serif;
 }
 
+
+
 body {
     font-family: 'Lato', sans-serif;
   }
@@ -21,6 +23,9 @@ body {
     font-style: normal;
 }
 
+.form-control {
+    background-color: #ffc5c552;;
+}
 
 .heading_2 {
     color: #F25822;

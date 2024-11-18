@@ -19,10 +19,10 @@
             {{ hidden_field }}
         {% endfor %}
 
-        <table class="table">
-            <tr>
-                <td>
-                <div style="text-align: left;">
+        <table class="table" style="background-color: #fefbe8;">
+            <tr style="background-color: #fefbe8;">
+                <td style="background-color: #fefbe8;">
+                <div style="text-align: left; background-color: #fefbe8;">
                     {{ form.title.label_tag }}
                     {% render_field form.title class="form-control" %}
 
@@ -37,8 +37,8 @@
                 </div>
                 </td>
 
-                <td>
-                    <div  class="col-sm" style="text-align: left;">
+                <td style="background-color: #fefbe8;">
+                    <div  class="col-sm" style="text-align: left; background-color: #fefbe8;">
                     {{ form.cooking_steps.label_tag }}
                     {% render_field form.cooking_steps class="form-control" %}
                     </div>
@@ -46,14 +46,14 @@
             </tr>
 
             <tr>
-                <td>
+                <td style="background-color: #fefbe8;">
                     <div style="text-align: left;">
                         {{ form.description.label_tag }}
                         {% render_field form.description class="form-control" %}
                     </div>
                 </td>
 
-                <td>
+                <td style="background-color: #fefbe8;">
                     <div style="text-align: left;">
                         {{ form.image.label_tag }}
                         {% render_field form.image class="form-control" %}
@@ -68,8 +68,8 @@
         </table>
 
         <div style="display: flex; gap: 50px; justify-content: center; margin-top: 20px;margin-bottom: 20px;">
-            <input type="submit" class="btn btn-primary" value="Сохранить">
-            <input type="reset" class="btn btn-primary" value="Очистить">
+            <input type="submit" class="btn btn-outline-secondary btn-lg" value="Сохранить">
+            <input type="reset" class="btn btn-outline-secondary btn-lg" value="Очистить">
         </div>
 
     </form>
