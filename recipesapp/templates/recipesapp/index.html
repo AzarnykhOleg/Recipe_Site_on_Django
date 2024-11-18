@@ -18,7 +18,7 @@
                     </div>
                     <div class="product__content">
                         <a href="recipe_full/{{recipe.id}}" class="product__price">{{ recipe.title }}</a>
-                        <p class="product__text">{{ recipe.cooking_steps|truncatewords:20|linebreaks }}</p>
+                        <p class="product__text">{{ recipe.description|truncatewords:30|linebreaks }}</p>
                         <p class="product__heading">Published {{ recipe.created_at }} by {{ recipe.author }}</p>
                     </div>
                 </div>

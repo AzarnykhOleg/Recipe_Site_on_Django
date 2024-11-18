@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load widget_tweaks %}
+{% load replace_n %}
 
 {% block title %}Добавление рецепта{% endblock %}
 
@@ -13,11 +14,11 @@
                 <tr>
                     <h1 scope="row" class="text-center align-middle">{{ forloop.counter }}</h1>
                     <h1 >{{ recipe.title }}</h1>
-                    <h4 class="align-middle">{{ recipe.description }}</h4>
+                    <h4 class="align-middle">{{ recipe.description|safe|replace_n }}</h4>
                     <div class="product_img_box">
                         <img class="product__img" src="{{ MEDIA_URL }}{{ recipe.image }}" alt="">
                     </div>
-                    <h2 class="align-middle">{{ recipe.cooking_steps }}</h2>
+                    <h2 class="align-middle">{{ recipe.cooking_steps|safe|replace_n }}</h2>
                     <h2 class="align-middle">Время приготовления: {{ recipe.cooking_time }} мин</h2>
                     <h3 class="align-middle">Автор: {{ recipe.author.get_full_name|default:recipe.author.username }}</h3>
                     <td class="text-center align-middle">
