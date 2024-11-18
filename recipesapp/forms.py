@@ -26,7 +26,7 @@ class RecipeForm(forms.Form):
     category = forms.ModelChoiceField(label='Категория', queryset=Category.objects.all())
 
     # products = forms.MultipleChoiceField(label='Продукты', choices=Product.objects.all())
-
+    old_image = forms.CharField(widget=forms.HiddenInput())
     image = forms.ImageField(label='Изображение', required=False)
     author_id = forms.IntegerField(widget=forms.HiddenInput())
 

@@ -23,8 +23,8 @@ def recipe_full(request, recipe_id):
 class Recipes(ListView):
     def get(self, request):
         if Recipe.objects.exists():
-            recipes = list(Recipe.objects.all())
-            recipes = random.sample(recipes, 6)
+            recipes = list(Recipe.objects.all().order_by('-created_at'))
+            recipes = recipes[:6]
             return render(request,
                           'recipesapp/index.html',
                           {'recipes': recipes})
@@ -63,7 +63,7 @@ class RecipeDetail(View):
                                    'cooking_steps': '',
                                    'cooking_time': 1,
                                    'image': '',
-                                   # 'old_image': '',
+                                   'old_image': '',
                                    'category': '',
                                    # 'products': '',
                                    'author_id': request.user.id,
@@ -87,7 +87,7 @@ class RecipeDetail(View):
                        'cooking_steps': recipe.cooking_steps,
                        'cooking_time': recipe.cooking_time,
                        'image': recipe.image,
-                       # 'old_image': recipe.image,
+                       'old_image': recipe.image,
                        'author_id': request.user.id
                        }
             form = RecipeForm(initial=initial)
@@ -105,6 +105,7 @@ class RecipeDetail(View):
                 cooking_steps = form.cleaned_data['cooking_steps']
                 cooking_time = form.cleaned_data['cooking_time']
                 image = form.cleaned_data['image']
+                old_image = form.cleaned_data['old_image']
                 author_id = form.cleaned_data['author_id']
                 author = User.objects.filter(pk=author_id).first()
                 fs = FileSystemStorage()
@@ -125,8 +126,7 @@ class RecipeDetail(View):
                     recipe.category = Category.objects.get(title=category)
                     recipe.cooking_steps = cooking_steps
                     recipe.cooking_time = cooking_time
-                    # recipe.image = image.name if image else old_image
-                    recipe.image = image.name
+                    recipe.image = image.name if image else old_image
                     recipe.author = author
                 recipe.save()
                 logger.info(f'Successfully create recipe: {recipe}')
