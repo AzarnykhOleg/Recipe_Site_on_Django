@@ -27,6 +27,7 @@ body {
     background-color: #ffc5c552;;
 }
 
+
 .heading_2 {
     color: #F25822;
     font-style: normal;
@@ -156,6 +157,18 @@ a {
     color: #F16D7F;
     font-size: 33px;
     font-weight: 700;
+}
+.fashion_2 {
+    font-style: normal;
+    font-size: 30px;
+    line-height: normal;
+    color: #fffefe;
+    font-family: Lato, serif;
+}
+.fashion_2:hover {
+    color: rgb(157, 100, 237);
+    /*font-size: 20px;*/
+    /*line-height: 24px;*/
 }
 
 .offer {
@@ -583,7 +596,7 @@ a {
         font-family: Lato, serif;
     }
 
-    .promo__heading, .fashion{
+    .promo__heading, .fashion, .fashion_2{
         font-size: 24px;
     }
 
@@ -671,7 +684,7 @@ a {
         font-size: 36px;
     }
 
-    .promo__heading, .fashion{
+    .promo__heading, .fashion, .fashion_2{
         font-size: 24px;
     }
 

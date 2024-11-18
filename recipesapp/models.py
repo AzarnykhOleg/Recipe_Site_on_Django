@@ -40,7 +40,6 @@ class Recipe(models.Model):
     title = models.CharField(max_length=20, verbose_name='Название блюда', null=False, blank=False)
     description = models.TextField(verbose_name="Краткое описание рецепта", null=False, blank=False)
     # TODO: настроить нормальные отображение и вывод изображений
-    # image = models.CharField(verbose_name="Изображение блюда", max_length=255, blank=True, null=True)
     image = models.ImageField(verbose_name="Изображение блюда", upload_to='images/', blank=True, null=True)
     cooking_steps = models.TextField(verbose_name='Шаги приготовления', null=False, blank=False)
     # TODO: добавить валидацию ввода времени приготовления блюда
