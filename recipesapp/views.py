@@ -134,4 +134,4 @@ class RecipeDetail(View):
             else:
                 # если ошибка (или валидация не пройдена) - заново отображаем форму, с уже заполненными данными
                 messages.warning(request, f'Ошибка в данных')
-                return render(request, 'website/recipe_detail.html', {'form': form})
+                return render(request, 'recipesapp/recipe_detail.html', {'form': form})
