@@ -1,10 +1,8 @@
 import logging
-import random
 
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.core.files.storage import FileSystemStorage
-from django.core.paginator import Paginator
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views import View
 from django.views.generic import ListView
@@ -63,13 +61,13 @@ class RecipeDetail(View):
                                    'cooking_steps': '',
                                    'cooking_time': 1,
                                    'image': '',
-                                   'old_image': '',
+                                   # 'old_image': '',
                                    'category': '',
                                    # 'products': '',
                                    'author_id': request.user.id,
                                    })
         messages.info(request, 'Заполните форму')
-        logger.info(f'Заполните форму')
+        logger.info('Заполните форму')
         return render(request, 'recipesapp/recipe_detail.html', {'form': form})
 
     def post(self, request):
@@ -87,11 +85,10 @@ class RecipeDetail(View):
                        'cooking_steps': recipe.cooking_steps,
                        'cooking_time': recipe.cooking_time,
                        'image': recipe.image,
-                       'old_image': recipe.image,
                        'author_id': request.user.id
                        }
             form = RecipeForm(initial=initial)
-            messages.info(request, f'Измените данные')
+            messages.info(request, 'Измените данные')
             return render(request, 'recipesapp/recipe_detail.html', {'form': form})
         else:
             # Пытаемся сохранить данные из формы
@@ -105,7 +102,6 @@ class RecipeDetail(View):
                 cooking_steps = form.cleaned_data['cooking_steps']
                 cooking_time = form.cleaned_data['cooking_time']
                 image = form.cleaned_data['image']
-                old_image = form.cleaned_data['old_image']
                 author_id = form.cleaned_data['author_id']
                 author = User.objects.filter(pk=author_id).first()
                 fs = FileSystemStorage()
@@ -126,12 +122,13 @@ class RecipeDetail(View):
                     recipe.category = Category.objects.get(title=category)
                     recipe.cooking_steps = cooking_steps
                     recipe.cooking_time = cooking_time
-                    recipe.image = image.name if image else old_image
+                    recipe.image = image.name
                     recipe.author = author
                 recipe.save()
                 logger.info(f'Successfully create recipe: {recipe}')
                 return redirect("/")  # Переходим к таблице рецептов
             else:
                 # если ошибка (или валидация не пройдена) - заново отображаем форму, с уже заполненными данными
-                messages.warning(request, f'Ошибка в данных')
-                return render(request, 'website/recipe_detail.html', {'form': form})
+                messages.warning(request, 'Ошибка в данных')
+                logger.warning('Ошибка в данных')
+                return render(request, 'recipesapp/recipe_detail.html', {'form': form})
